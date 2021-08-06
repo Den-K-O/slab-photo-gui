@@ -2,10 +2,10 @@ import PySimpleGUI as sg
 
 # sg.theme('Dark Green 7')
 sg.theme('Topanga')      # Add some color to the window
-my_font = ("Consolas", 22)
-text_size=12
-inputsize=12
-button_size = 14
+my_font = ("Consolas", 18)
+text_size=10
+inputsize=10
+button_size = 12
 
 col1=[ 
            [sg.Txt('Дата початок',size=(text_size,1),font=my_font),sg.Input(key='-IN4-', size=(inputsize,1),font=my_font)],
