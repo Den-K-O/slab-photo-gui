@@ -3,19 +3,21 @@ import PySimpleGUI as sg
 # sg.theme('Dark Green 7')
 sg.theme('Topanga')      # Add some color to the window
 my_font = ("Consolas", 18)
-text_size=10
-inputsize=10
-button_size = 12
+text_size=14
+inputsize=14
+button_size = 14
 
 col1=[ 
-           [sg.Txt('Дата початок',size=(text_size,1),font=my_font),sg.Input(key='-IN4-', size=(inputsize,1),font=my_font)],
-           [sg.Txt('Дата кінець',size=(text_size,1),font=my_font),sg.Input(key='-IN5-', size=(inputsize,1),font=my_font)],           
+           [sg.Txt('Дата початок',size=(text_size,2),font=my_font)],
+           [sg.Input(key='-IN4-', size=(inputsize,2),font=my_font)],
+           [sg.Txt('Дата кінець',size=(text_size,2),font=my_font)],
+           [sg.Input(key='-IN5-', size=(inputsize,2),font=my_font)],           
          ]
 col2=[ 
-           [sg.CalendarButton('Оберіть дату',  target='-IN4-', format = "%d-%m-%Y",font=my_font,size=(button_size,1) )],
-           [sg.CalendarButton('Оберіть дату',  target='-IN5-', format = "%d-%m-%Y",font=my_font,size=(button_size,1) )],
-           [sg.Button('Записи', bind_return_key=True,font=my_font,size=(button_size,1))],
-           [sg.Button('Exit',font=my_font,size=(button_size,1))]
+           [sg.CalendarButton('Оберіть дату',  target='-IN4-', format = "%d-%m-%Y",font=my_font,size=(button_size,2) )],
+           [sg.CalendarButton('Оберіть дату',  target='-IN5-', format = "%d-%m-%Y",font=my_font,size=(button_size,2) )],
+           [sg.Button('Записи', bind_return_key=True,font=my_font,size=(button_size,2))],
+           [sg.Button('Exit',font=my_font,size=(button_size,2))]
          ]
 
 layout = [ 
