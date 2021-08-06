@@ -14,7 +14,7 @@ col1=[
            [sg.Input(key='-IN5-', size=(inputsize,2),font=my_font)],           
          ]
 col2=[ 
-           [sg.Spin(values=('Spin Box 1', '2', '3'), initial_value='Spin Box 1',font=my_font,size=(button_size,2), readonly = True ) ],
+           [sg.Spin(values=('Spin Box 1', '2', '3'), initial_value='Spin Box 1',font=my_font,size=(button_size,4), readonly = True ) ],
            [sg.CalendarButton('Оберіть дату',  target='-IN5-', format = "%d-%m-%Y",font=my_font,size=(button_size,2))],
            [sg.Button('Записи', bind_return_key=True,font=my_font,size=(button_size,2))],
            [sg.Button('Exit',font=my_font,size=(button_size,2))]
