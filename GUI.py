@@ -54,11 +54,11 @@ while True:
         # window['-OUTPUT-'].update(calc)
     
     if event == '-UP-':        
-        window['-THCK-'].update(str(int(values['-THCK-'])+1))
+        window['-THCK-'].update(str(int(values['-THCK-'])+5))
         
     
     if event == '-DN-':
-        window['-THCK-'].update(str(int(values['-THCK-'])-1))
+        window['-THCK-'].update(str(int(values['-THCK-'])-5))
 
     #else:
     #    break
