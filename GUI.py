@@ -10,7 +10,7 @@ inputsize=14
 button_size = 14
 
 col1=[ 
-           [sg.Button('X',font=my_font,size=(5,2),pad=((10,10),(10,10)))]
+           [sg.Button('X',font=my_font,size=(5,2),pad=((10,10),(10,10)))],
            [sg.Button('Горіх',key='-WOOD-',font=my_font,size=(button_size,2),pad=((10,10),(10,10)))],
            [sg.Button('Фото',key='-PHOTO-',font=my_font,size=(button_size,2),pad=((10,10),(10,10)))]          
            
