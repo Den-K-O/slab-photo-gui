@@ -4,6 +4,7 @@ import base64
 # sg.theme('Dark Green 7')
 sg.theme('Topanga')      # Add some color to the window
 my_font = ("Consolas", 20)
+counter_font = ("Consolas", 25)
 text_size=14
 inputsize=14
 button_size = 14
@@ -15,9 +16,9 @@ col1=[
            [sg.Input(key='-IN5-', size=(inputsize,2),font=my_font)],           
          ]
 col2=[ 
-           [sg.Button('',key='-UP-', image_filename="up.png", bind_return_key=True,font=my_font,size=(button_size,2), pad=((10,10),(10,10)))],
-           [sg.Input(key='-THCK-', default_text = "1", size=(inputsize,2),font=my_font)],
-           [sg.Button('',key='-DN-', image_filename="dn.png", bind_return_key=True,font=my_font,size=(button_size,2), pad=((10,10),(10,10)))],
+           [sg.Button('',key='-UP-', image_filename="up.png",image_size=(80,80), font=my_font,size=(button_size,2), pad=((10,10),(10,10)))],
+           [sg.Input(key='-THCK-', default_text = "1", size=(inputsize,4),font=counter_font)],
+           [sg.Button('',key='-DN-', image_filename="dn.png", font=my_font,size=(button_size,2), pad=((10,10),(10,10)))],
            [sg.Button('X',font=my_font,size=(button_size,2))]
          ]
 
