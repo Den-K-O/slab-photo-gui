@@ -1,4 +1,5 @@
 import PySimpleGUI as sg
+import base64
 
 # sg.theme('Dark Green 7')
 sg.theme('Topanga')      # Add some color to the window
@@ -14,22 +15,22 @@ col1=[
            [sg.Input(key='-IN5-', size=(inputsize,2),font=my_font)],           
          ]
 col2=[ 
-           [sg.Spin(values=('Spin Box 1', '2', '3'), initial_value='Spin Box 1',font=my_font,size=(button_size,4), readonly = True ) ],
-           [sg.CalendarButton('Оберіть дату',  target='-IN5-', format = "%d-%m-%Y",font=my_font,size=(button_size,2))],
-           [sg.Button('Записи', bind_return_key=True,font=my_font,size=(button_size,2))],
-           [sg.Button('Exit',font=my_font,size=(button_size,2))]
+           [sg.Button('',key='-UP-', image_filename="up.png", bind_return_key=True,font=my_font,size=(button_size,2), pad=((10,10),(10,10)))],
+           [sg.Input(key='-THCK-', default_text = "1", size=(inputsize,2),font=my_font)],
+           [sg.Button('',key='-DN-', image_filename="dn.png", bind_return_key=True,font=my_font,size=(button_size,2), pad=((10,10),(10,10)))],
+           [sg.Button('X',font=my_font,size=(button_size,2))]
          ]
 
 layout = [ 
            [sg.Column(col1),sg.Column(col2)],           
          ]
 
-window = sg.Window('Записи часу', layout, grab_anywhere=False, size=(720, 480), no_titlebar=True, location=(0, 0), keep_on_top=True)
+window = sg.Window('Записи часу', layout, grab_anywhere=False, size=(720, 480), no_titlebar=True, location=(0, 0), keep_on_top=True,  finalize=True)
 
 while True:
     event, values = window.read()
 
-    if event == sg.WIN_CLOSED or event == 'Exit':
+    if event == sg.WIN_CLOSED or event == 'X':
         break  
     
     if event == 'Записи':
@@ -50,5 +51,12 @@ while True:
             sg.popup('Увага!','Перевірте правильність введених даних!')
         # window['-OUTPUT-'].update(calc)
     
-    else:
-        break
+    if event == '-UP-':        
+        window['-THCK-'].update(str(int(values['-THCK-'])+1))
+        
+    
+    if event == '-DN-':
+        window['-THCK-'].update(str(int(values['-THCK-'])-1))
+
+    #else:
+    #    break
