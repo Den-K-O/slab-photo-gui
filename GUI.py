@@ -10,6 +10,7 @@ inputsize=14
 button_size = 14
 
 col1=[ 
+           [sg.Button('X',font=my_font,size=(5,2),pad=((10,10),(10,10)))]
            [sg.Button('Горіх',key='-WOOD-',font=my_font,size=(button_size,2),pad=((10,10),(10,10)))],
            [sg.Button('Фото',key='-PHOTO-',font=my_font,size=(button_size,2),pad=((10,10),(10,10)))]          
            
@@ -18,7 +19,7 @@ col2=[
            [sg.Button('',key='-UP-', image_filename="up.png",image_size=(80,80),image_subsample=2, font=my_font,size=(button_size,2), pad=((10,10),(10,10)))],
            [sg.Input(key='-THCK-', default_text = "30", size=(4,15),font=counter_font,pad=((10,10),(10,10)), justification='center')],
            [sg.Button('',key='-DN-', image_filename="dn.png",image_size=(80,80),image_subsample=2, font=my_font,size=(button_size,2), pad=((10,10),(10,10)))],
-           [sg.Button('X',font=my_font,size=(5,2),pad=((10,10),(10,10)))]
+           
          ]
 
 layout = [ 
@@ -26,7 +27,7 @@ layout = [
            [sg.StatusBar( text='status', key='status_bar', font=my_font )]
          ]
 
-window = sg.Window('Записи часу', layout, grab_anywhere=False, size=(320, 240), no_titlebar=True, location=(0, 0), keep_on_top=True,  finalize=True)
+window = sg.Window('Записи часу', layout, grab_anywhere=False, size=(480, 320), no_titlebar=True, location=(0, 0), keep_on_top=True,  finalize=True)
 
 while True:
     event, values = window.read()
