@@ -7,23 +7,23 @@ my_font = ("Consolas", 20)
 counter_font = ("Consolas", 25)
 text_size=14
 inputsize=14
-button_size = 14
+button_size = 18
 
 col1=[ 
-           [sg.Button('X',font=my_font,size=(5,1))],
-           [sg.Button('Горіх',key='-WOOD-',font=my_font,size=(button_size,1))],
-           [sg.Button('Фото',key='-PHOTO-',font=my_font,size=(button_size,1))]          
+           [sg.Button('X',font=my_font,size=(button_size,1),pad=((5,5),(12,12)))],
+           [sg.Button('Горіх',key='-WOOD-',font=my_font,size=(button_size,1),pad=((5,5),(12,12)))],
+           [sg.Button('Фото',key='-PHOTO-',font=my_font,size=(button_size,1),pad=((5,5),(12,12)))]          
            
      ]
 col2=[ 
-           [sg.Button('',key='-UP-', image_filename="up.png",image_size=(80,80),image_subsample=2, font=my_font,size=(button_size,2), pad=((10,10),(10,10)))],
-           [sg.Input(key='-THCK-', default_text = "30", size=(4,15),font=counter_font,pad=((10,10),(10,10)), justification='center')],
-           [sg.Button('',key='-DN-', image_filename="dn.png",image_size=(80,80),image_subsample=2, font=my_font,size=(button_size,2), pad=((10,10),(10,10)))],
+           [sg.Button('',key='-UP-', image_filename="up.png",image_size=(80,80),image_subsample=2, font=my_font,size=(button_size,2), pad=((5,5),(5,5)))],
+           [sg.Input(key='-THCK-', default_text = "30", size=(4,15),font=counter_font,pad=((5,5),(5,5)), justification='center')],
+           [sg.Button('',key='-DN-', image_filename="dn.png",image_size=(80,80),image_subsample=2, font=my_font,size=(button_size,2), pad=((5,5),(5,5)))],
            
          ]
 
 layout = [ 
-           [sg.Column(col1),sg.Column(col2)],
+           [sg.Column(col1,size=(320,240),element_justification = 'center'),sg.Column(col2,size=(160,240),element_justification = 'center')],
            [sg.StatusBar( text='status', key='status_bar', font=my_font )]
          ]
 
