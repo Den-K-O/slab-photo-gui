@@ -10,20 +10,20 @@ inputsize=14
 button_size = 14
 
 col1=[ 
-           [sg.Txt('Дата початок',size=(text_size,2),font=my_font)],
-           [sg.Input(key='-IN4-', size=(inputsize,2),font=my_font)],
-           [sg.Txt('Дата кінець',size=(text_size,2),font=my_font)],
-           [sg.Input(key='-IN5-', size=(inputsize,2),font=my_font)],           
-         ]
+           [sg.Button('Горіх',key='-WOOD-',font=my_font,size=(button_size,2),pad=((10,10),(10,10)))],
+           [sg.Button('Фото',key='-PHOTO-',font=my_font,size=(button_size,2),pad=((10,10),(10,10)))]          
+           
+     ]
 col2=[ 
            [sg.Button('',key='-UP-', image_filename="up.png",image_size=(80,80),image_subsample=2, font=my_font,size=(button_size,2), pad=((10,10),(10,10)))],
-           [sg.Input(key='-THCK-', default_text = "1", size=(4,15),font=counter_font,pad=((10,10),(10,10)), readonly = True)],
+           [sg.Input(key='-THCK-', default_text = "30", size=(4,15),font=counter_font,pad=((10,10),(10,10)), justification='center')],
            [sg.Button('',key='-DN-', image_filename="dn.png",image_size=(80,80),image_subsample=2, font=my_font,size=(button_size,2), pad=((10,10),(10,10)))],
            [sg.Button('X',font=my_font,size=(5,2),pad=((10,10),(10,10)))]
          ]
 
 layout = [ 
-           [sg.Column(col1),sg.Column(col2)],           
+           [sg.Column(col1),sg.Column(col2)],
+           [sg.StatusBar( text='status', key='status_bar', font=my_font )]
          ]
 
 window = sg.Window('Записи часу', layout, grab_anywhere=False, size=(720, 480), no_titlebar=True, location=(0, 0), keep_on_top=True,  finalize=True)
