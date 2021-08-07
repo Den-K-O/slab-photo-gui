@@ -3,7 +3,7 @@ import base64
 
 # sg.theme('Dark Green 7')
 sg.theme('Topanga')      # Add some color to the window
-my_font = ("Consolas", 20)
+my_font = ("Consolas", 22)
 counter_font = ("Consolas", 25)
 text_size=14
 inputsize=14
