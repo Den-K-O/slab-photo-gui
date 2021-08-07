@@ -26,7 +26,7 @@ layout = [
            [sg.StatusBar( text='status', key='status_bar', font=my_font )]
          ]
 
-window = sg.Window('Записи часу', layout, grab_anywhere=False, size=(720, 480), no_titlebar=True, location=(0, 0), keep_on_top=True,  finalize=True)
+window = sg.Window('Записи часу', layout, grab_anywhere=False, size=(592, 448), no_titlebar=True, location=(0, 0), keep_on_top=True,  finalize=True)
 
 while True:
     event, values = window.read()
