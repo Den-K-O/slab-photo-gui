@@ -24,7 +24,7 @@ col2=[
 
 layout = [ 
            [sg.Column(col1,size=(320,240),element_justification = 'center'),sg.Column(col2,size=(160,240),element_justification = 'center')],
-           [sg.StatusBar( text='status', key='status_bar', font=my_font )]
+           [sg.StatusBar( text='...status...', key='status_bar', font=my_font, justification='center')]
          ]
 
 window = sg.Window('Записи часу', layout, grab_anywhere=False, size=(480, 320), no_titlebar=True, location=(0, 0), keep_on_top=True,  finalize=True)
@@ -54,11 +54,11 @@ while True:
         # window['-OUTPUT-'].update(calc)
     
     if event == '-UP-':        
-        window['-THCK-'].update(str(int(values['-THCK-'])+5))
+        if int(values['-THCK-'])<150: window['-THCK-'].update(str(int(values['-THCK-'])+5))
         
     
     if event == '-DN-':
-        window['-THCK-'].update(str(int(values['-THCK-'])-5))
+        if int(values['-THCK-'])>0: window['-THCK-'].update(str(int(values['-THCK-'])-5))
 
     #else:
     #    break
