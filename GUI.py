@@ -49,7 +49,7 @@ def wood_selection_window(wood_species):
     MAX_COL = 3
     MAX_ROWS = len(wood_species)//MAX_COL
     #print (MAX_ROWS)
-    layout =  [[sg.Button(wood_species_lst.pop(),font=my_font,size=(9,2),pad=((2,2),(2,2))) for j in range(MAX_COL)] for i in range(MAX_ROWS)]
+    layout =  [[sg.Button(wood_species_lst.pop(),font=my_font,size=(7,2),pad=((2,2),(2,2))) for j in range(MAX_COL)] for i in range(MAX_ROWS)]
 
     window = sg.Window('Вибір породи дерева', layout, grab_anywhere=False, size=(480, 320), no_titlebar=True, location=(0, 0), keep_on_top=True, modal=True, finalize=True)
     
