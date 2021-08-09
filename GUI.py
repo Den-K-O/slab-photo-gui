@@ -9,9 +9,19 @@ text_size=14
 inputsize=14
 button_size = 18
 
+wood_species = ["Горіх",
+                "Дуб",
+                "Ясен",
+                "В'яз",
+                "Тополя",
+                "Клен",
+                "Морений дуб",    
+                "Амер. горіх",
+                "Маслина"]
+
 def start_window():
     col1=[            
-               [sg.Button('Горіх',key='-WOOD-',font=my_font,size=(button_size,2),pad=((5,5),(12,12)))],
+               [sg.Button(wood_species[0],key='-WOOD-',font=my_font,size=(button_size,2),pad=((5,5),(12,12)))],
                [sg.Button('Фото',key='-PHOTO-',font=my_font,size=(button_size,2),pad=((5,5),(12,12)))]          
                
          ]
@@ -32,17 +42,6 @@ def start_window():
 
 st_window=start_window()
 
-
-wood_species = ["Горіх",
-                "Дуб",
-                "Ясен",
-                "В'яз",
-                "Тополя",
-                "Клен",
-                "Морений дуб",    
-                "Амер. горіх",
-                "Маслина"]
-
 wood_species_lst = wood_species.copy()
 
 def wood_selection_window(wood_species):  
@@ -61,23 +60,26 @@ while True:
     if event == sg.WIN_CLOSED or event == 'X':
         break  
     
-    if event == '-WOOD-':
-        wood_species_lst = wood_species.copy()
+    
+    
+    if event == '-WOOD-':     ### select wood species ###
+        wood_species_lst = list(reversed(wood_species.copy()))
         wood_window=wood_selection_window(wood_species)  
         while True:
             event, values = wood_window.read()
-            print(event)
+            #print(event)
             if event in wood_species:
                 st_window['-WOOD-'].update(event)
                 wood_window.close()
                 break      
-            
-    if event == '-UP-':        
+    
+   
+    if event == '-UP-':       ### change slab thickness ###   
         if int(values['-THCK-'])<150: st_window['-THCK-'].update(str(int(values['-THCK-'])+5))
         
     
-    if event == '-DN-':
+    if event == '-DN-':       ### change slab thickness ###
         if int(values['-THCK-'])>0: st_window['-THCK-'].update(str(int(values['-THCK-'])-5))
-
+    
     #else:
     #    break
