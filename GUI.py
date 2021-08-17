@@ -54,6 +54,14 @@ def wood_selection_window(wood_species):
     
     return window
 
+def make_photo_window(wood_species):  
+    layout =  [[]
+              ]
+
+    window = sg.Window('Очікується фото', layout, grab_anywhere=False, size=(480, 320), no_titlebar=True, location=(0, 0), keep_on_top=True, modal=True, finalize=True)
+    
+    return window
+
 while True:
     event, values = st_window.read()
 
