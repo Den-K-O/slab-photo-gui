@@ -36,7 +36,7 @@ def start_window():
 
     layout = [ 
                [sg.Column(col1,size=(320,240),element_justification = 'center'),sg.Column(col2,size=(160,240),element_justification = 'center')],
-               [sg.Button('X',font=("Consolas", 15),size=(2,1),pad=((5,5),(12,12))),sg.StatusBar( text='...status...', key='status_bar',font=my_font , justification='center')]
+               [sg.Button('X',font=("Consolas", 15),size=(2,1),pad=((5,5),(12,12))),sg.StatusBar( text='...status...', key='-status_bar-',font=my_font , justification='center')]
              ]
 
     window = sg.Window('Параметри слеба', layout, grab_anywhere=False, size=(480, 320), no_titlebar=True, location=(0, 0), keep_on_top=True,  finalize=True)
@@ -56,13 +56,13 @@ def wood_selection_window(wood_species):
     
     return window
 
-def make_photo_window(wood_species):  
-    layout =  [[]
-              ]
+# def make_photo_window(wood_species):  
+    # layout =  [[]
+              # ]
 
-    window = sg.Window('Очікується фото', layout, grab_anywhere=False, size=(480, 320), no_titlebar=True, location=(0, 0), keep_on_top=True, modal=True, finalize=True)
+    # window = sg.Window('Очікується фото', layout, grab_anywhere=False, size=(480, 320), no_titlebar=True, location=(0, 0), keep_on_top=True, modal=True, finalize=True)
     
-    return window
+    # return window
 
 while True:
     event, values = st_window.read()
@@ -70,8 +70,16 @@ while True:
     if event == sg.WIN_CLOSED or event == 'X':
         break  
     
-    if event == '-PHOTO-':
-        asyncio.run(slab_photo_client_awaitable.main()) 
+    if event == '-PHOTO-':        
+        row={
+        "wood" : st_window['-WOOD-'].ButtonText.lower(),
+        "thickness": int(values['-THCK-']),
+        }
+        print(row)
+        id = asyncio.run(slab_photo_client_awaitable.main(row))
+        #print("id returned to GUI: ",id)
+        st_window['-status_bar-'].update("OK, id:"+str(id))
+        
     
     if event == '-WOOD-':     ### select wood species ###
         wood_species_lst = list(reversed(wood_species.copy()))
@@ -82,7 +90,7 @@ while True:
             if event in wood_species:
                 st_window['-WOOD-'].update(event)
                 wood_window.close()
-                break      
+                break
     
    
     if event == '-UP-':       ### change slab thickness ###   

@@ -6,6 +6,7 @@ import functools
 import PySimpleGUI as sg      
 import datetime
 import undistort_charuco
+import write_to_DB
 
 DEBUG=False
 #DEBUG=True
@@ -76,20 +77,25 @@ def close_socket(sock):
     if DEBUG: print ('closing socket')
     sock.close()
 
-async def get_photo(sock):    
+async def get_photo(sock,row):    
     
     start = time()
-    photo = await request_photo(sock)        
+    photo = await request_photo(sock)     
+            
+    # get name from slabs.id
+    id=write_to_DB.create_entry(row)
+    print("Slab added to DB, id: ",id)
     
-    name = 'image_'+datetime.datetime.now().strftime('%d-%m-%Y_%H_%M_%S')
-    # with open("photos\\"+name+'.jpeg',"wb") as outfile:
-        # outfile.write(photo.getbuffer())
-    undistort_charuco.undistort_image(photo,name)    
+    name = str(id)
+    
+    undistort_charuco.undistort_image(photo,name)
+        
     end = time()
     if DEBUG: print("sending time: ", end-start)
     # create_photo_entry_in_DB
     # save_photo_with_DB_id  
     # photo processing will be done in another background process
+    return id
     
 async def progbar_check():
     # global dots
@@ -139,16 +145,23 @@ def create_progressbar():
     # done with loop... need to destroy the window as it's still open
     return window
 
-async def main():
+async def main(slab_data):
     sock = open_socket()  
-       
+    row=slab_data   
     tasks = []
-    tasks.append(progbar_check())
-    tasks.append(asyncio.create_task(get_photo(sock)))    
-    for t in tasks:
-        await t
+    t1=asyncio.create_task(progbar_check())
+    t2=asyncio.create_task(get_photo(sock,row))    
+    
+    await t1
+    id = await t2
+       
     close_socket(sock) #in the end        
-
-if __name__=='__main__':   
-    asyncio.run(main()) 
+    return id 
+    
+if __name__=='__main__':
+    row={
+    "wood" : "горіх",
+    "thickness": 60,
+    }
+    asyncio.run(main(row)) 
     
