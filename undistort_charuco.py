@@ -27,5 +27,5 @@ def undistort_image(img,filename):
     #mtx, dist = load_coefficients('calibration_charuco.yml')
     original = create_opencv_image_from_stringio(img,cv2.IMREAD_ANYCOLOR+cv2.IMREAD_ANYDEPTH)
     dst = cv2.undistort(original, mtx, dist, None, mtx)
-    cv2.imwrite(f'photos/{filename}.jpg', dst)
+    cv2.imwrite(f'/home/pi/shared/{filename}.jpg', dst)
     #cv2.imwrite(f'photos\\out\\test_undist.jpg', original)
