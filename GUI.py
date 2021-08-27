@@ -1,5 +1,7 @@
 import PySimpleGUI as sg
 import base64
+import slab_photo_client_awaitable
+import asyncio
 
 # sg.theme('Dark Green 7')
 sg.theme('Topanga')      # Add some color to the window
@@ -68,7 +70,8 @@ while True:
     if event == sg.WIN_CLOSED or event == 'X':
         break  
     
-    
+    if event == '-PHOTO-':
+        asyncio.run(slab_photo_client_awaitable.main()) 
     
     if event == '-WOOD-':     ### select wood species ###
         wood_species_lst = list(reversed(wood_species.copy()))

@@ -130,3 +130,6 @@ dmypy.json
 
 start.bat
 upload.bat
+
+photos/
+rpi/

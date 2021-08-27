@@ -4,9 +4,10 @@ from io import BytesIO
 import asyncio
 import functools
 import PySimpleGUI as sg      
+import datetime
 
 DEBUG=False
-DEBUG=True
+#DEBUG=True
 
 def open_socket():
     HOST = '192.168.1.75'
@@ -71,14 +72,16 @@ async def request_photo(sock):
 
 
 def close_socket(sock):
-    print ('closing socket')
+    if DEBUG: print ('closing socket')
     sock.close()
 
 async def get_photo(sock):    
     
     start = time()
     photo = await request_photo(sock)        
-    with open('image_from_camera.jpeg',"wb") as outfile:
+    
+    name = 'image_'+datetime.datetime.now().strftime('%d-%m-%Y_%H_%M_%S')
+    with open(name+'.jpeg',"wb") as outfile:
         outfile.write(photo.getbuffer())
     end = time()
     if DEBUG: print("sending time: ", end-start)
@@ -87,10 +90,10 @@ async def get_photo(sock):
     # photo processing will be done in another background process
     
 async def progbar_check():
-    global dots
+    # global dots
     global progress
     progress = 0
-    dots = 3
+    dots = 3    
     window = create_progressbar()
     
     while True:
@@ -117,14 +120,19 @@ async def progbar_check():
 def create_progressbar():    
     sg.theme('Topanga')
     BAR_MAX = 100
-
+    my_font = ("Consolas", 20)
     # layout the Window
-    layout = [[sg.Text('Завантажується зображення...',k='-TEXT-')],
-              [sg.ProgressBar(BAR_MAX, orientation='h', size=(20,20), key='-PROG-')],
+    column = [[sg.Text('Завантажується зображення...',k='-TEXT-', font=my_font,size=(42,2),pad=((5,5),(7,7)))],
+              [sg.ProgressBar(BAR_MAX, orientation='h', size=(42,30), key='-PROG-')],
              ]
-
+    layout = [[sg.Text(key='-EXPAND-', font='ANY 1', pad=(0, 0))],  # the thing that expands from top
+              [sg.Text('', pad=(0,0),key='-EXPAND2-'),              # the thing that expands from left
+               sg.Column(column, vertical_alignment='center', justification='center',  k='-C-')]]
     # create the Window
-    window = sg.Window('Завантаження', layout)
+    window = sg.Window('Завантаження', layout, grab_anywhere=False, size=(480, 320), no_titlebar=True, location=(0, 0), keep_on_top=True, modal=True, finalize=True)
+    window['-C-'].expand(True, True, True)
+    window['-EXPAND-'].expand(True, True, True)
+    window['-EXPAND2-'].expand(True, False, True)
     # loop that would normally do something useful    
     # done with loop... need to destroy the window as it's still open
     return window

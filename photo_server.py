@@ -1,21 +1,22 @@
 #!/usr/bin/env python
 # encoding: utf-8
 import json
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
+import slab_photo_client_awaitable
+import asyncio
+
 
 from waitress import serve
-
+i=0 
 app = Flask(__name__)
-
-@app.route('/bind/', methods=['GET']) # rfid,order_id
-def check_binding():
-    rfid = request.args.get('rfid')
-    print (rfid)
-    try:
-        res=submit_rfid_location_to_db.card_order_binding(rfid)
-        print (res)
-        return jsonify({'result': "OK", 'rfid': rfid, 'order_id': res})
-    except:
-        return jsonify({'result': "ERROR", 'rfid': rfid, 'order_id': "not_found"})
+@app.route("/", methods=['GET', 'POST'])
+def index():   
+    global i
+    i+=1
+    if request.method == 'GET':
+        asyncio.run(slab_photo_client_awaitable.main()) 
+        return f"OK, {i}"
+    
+    return render_template("index.html")
 
 serve(app, host='0.0.0.0', port=5000, threads=1)
