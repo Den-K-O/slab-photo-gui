@@ -5,6 +5,7 @@ import asyncio
 import functools
 import PySimpleGUI as sg      
 import datetime
+import undistort_charuco
 
 DEBUG=False
 #DEBUG=True
@@ -81,8 +82,9 @@ async def get_photo(sock):
     photo = await request_photo(sock)        
     
     name = 'image_'+datetime.datetime.now().strftime('%d-%m-%Y_%H_%M_%S')
-    with open(name+'.jpeg',"wb") as outfile:
-        outfile.write(photo.getbuffer())
+    # with open("photos\\"+name+'.jpeg',"wb") as outfile:
+        # outfile.write(photo.getbuffer())
+    undistort_charuco.undistort_image(photo,name)    
     end = time()
     if DEBUG: print("sending time: ", end-start)
     # create_photo_entry_in_DB
