@@ -51,7 +51,7 @@ def start_window():
     layout = [ 
                [sg.Column(col1,size=(320,240),element_justification = 'center'),sg.Column(col2,size=(160,240),element_justification = 'center')],
                #[sg.Button('X',font=("Consolas", 15),size=(2,1),pad=((5,5),(12,12))),
-               sg.StatusBar( text='...status...', key='-status_bar-',font=my_font , justification='center')]
+               [sg.StatusBar( text='...status...', key='-status_bar-',font=my_font , justification='center')]
              ]
 
     window = sg.Window('Параметри слеба', layout, grab_anywhere=False, size=(480, 320), no_titlebar=True, location=(0, 0), keep_on_top=True,  finalize=True)
