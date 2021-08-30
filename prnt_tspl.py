@@ -76,7 +76,7 @@ class Printer:
         except:
             os.write(self.printer, b'\r\n')
             
-    def print_image(self,image)
+    def print_image(self,image):
     my_bytes,w,h =self.img_to_bytes(image)
     x=0
     y=0
