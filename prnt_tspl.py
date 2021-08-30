@@ -15,8 +15,7 @@ from PIL import Image
 
 #DEBUG = False
 DEBUG = True
-class Printer:
-    
+class Printer:    
     def __init__(self):
         self.PRINTER = '/dev/usb/lp0' # the printer device 
         self.DOTS_MM = 8 # printer dots per mm, 8 == 203 dpi 
@@ -101,7 +100,7 @@ class Printer:
         h = im.height
         return bytes, w, h
     
-    def print_text(self,text,x=self.x0,y=self.y0,font='5',rotation=0,x_mult=1,y_mult=1):
+    def print_text(self,text,x=0,y=0,font='5',rotation=0,x_mult=1,y_mult=1):
         self.commands.append(f'TEXT {x},{y},"{font}",{rotation},{x_mult},{y_mult},"{text}"')
 
 
