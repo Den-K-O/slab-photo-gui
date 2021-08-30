@@ -2,8 +2,9 @@ import PySimpleGUI as sg
 import base64
 import slab_photo_client_awaitable
 import asyncio
+from prnt_tspl import Printer
 
-# sg.theme('Dark Green 7')
+p=Printer()
 sg.theme('Topanga')      # Add some color to the window
 my_font = ("Consolas", 22)
 counter_font = ("Consolas", 25)
@@ -11,6 +12,19 @@ text_size=14
 inputsize=14
 button_size = 18
 
+#DEBUG = False
+DEBUG = True
+
+def print_id(id,p):
+    if DEBUG: print("starting")  
+    if DEBUG: print ("printer initiated")
+    p.clear_print_buffer()
+    p.print_text("S"+str(id).zfill(5),x=24,y=112,x_mult=2,y_mult=2)   
+    if DEBUG: print ("commands ready:")
+    if DEBUG: print(p.commands)
+    p.print()
+    if DEBUG: print("finished")
+    
 wood_species = ["Горіх",
                 "Дуб",
                 "Ясен",
@@ -79,6 +93,7 @@ while True:
         id = asyncio.run(slab_photo_client_awaitable.main(row))
         #print("id returned to GUI: ",id)
         st_window['-status_bar-'].update("OK, id:"+str(id))
+        print_id(id,p)
         
     
     if event == '-WOOD-':     ### select wood species ###
