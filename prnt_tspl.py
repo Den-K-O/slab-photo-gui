@@ -77,15 +77,15 @@ class Printer:
             os.write(self.printer, b'\r\n')
             
     def print_image(self,image):
-    my_bytes,w,h =self.img_to_bytes(image)
-    x=0
-    y=0
-    w_bytes = w//8
-    h_rows = h
-    header = f'BITMAP {x},{y}, {w_bytes}, {h_rows}, 0,'
-    payload = my_bytes
-    self.commands.append(header)
-    self.commands.append(payload)
+        my_bytes,w,h =self.img_to_bytes(image)
+        x=0
+        y=0
+        w_bytes = w//8
+        h_rows = h
+        header = f'BITMAP {x},{y}, {w_bytes}, {h_rows}, 0,'
+        payload = my_bytes
+        self.commands.append(header)
+        self.commands.append(payload)
     
     def clear_print_buffer(self):
         self.commands.append('CLS')
