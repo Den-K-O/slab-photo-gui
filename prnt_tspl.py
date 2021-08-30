@@ -17,12 +17,20 @@ from PIL import Image
 DEBUG = True
 class Printer:
     
-    def __init__(self): 
-        self.x0=0
-        self.y0=0
-        self.width = WIDTH_MM * DOTS_MM
-        self.height = HEIGHT_MM * DOTS_MM
-        self.printer =os.open(PRINTER, os.O_RDWR) 
+    def __init__(self):
+        self.PRINTER = '/dev/usb/lp0' # the printer device 
+        self.DOTS_MM = 8 # printer dots per mm, 8 == 203 dpi 
+        self.WIDTH_MM = 56 # sticker width, mm 
+        self.HEIGHT_MM =40  # sticker height, mm 
+        self.GAP_MM = 1.8 # sticker gap, mm 
+        self.FONT = "5" # built-in vector font, scalable by X and Y 
+        self.FONT_X_MULT = 2 # font multiplication, for "0" font is size in points 
+        self.FONT_Y_MULT = 2 # font multiplication, for "0" font is size in points 
+        self.x0=0 # offset
+        self.y0=0 # offset
+        self.width = self.WIDTH_MM * self.DOTS_MM
+        self.height = self.HEIGHT_MM * self.DOTS_MM
+        self.printer =os.open(self.PRINTER, os.O_RDWR) 
         self.commands = []
 
     def printer_status(self): 
@@ -43,8 +51,8 @@ class Printer:
                 time.sleep(1) 
             print(file=sys.stderr)
     def page_setup(self):
-        self.command('SIZE {} mm,{}mm'.format(WIDTH_MM, HEIGHT_MM))
-        self.command('GAP {} mm,0mm'.format(GAP_MM)) 
+        self.command('SIZE {} mm,{}mm'.format(self.WIDTH_MM, self.HEIGHT_MM))
+        self.command('GAP {} mm,0mm'.format(self.GAP_MM)) 
         self.command('DIRECTION 1')
 
     def print(self):
