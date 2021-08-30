@@ -22,7 +22,7 @@ def print_id(id,p):
     p.print_text("S"+str(id).zfill(5),x=24,y=112,x_mult=2,y_mult=2)   
     if DEBUG: print ("commands ready:")
     if DEBUG: print(p.commands)
-    p.print()
+    p.print(3)
     if DEBUG: print("finished")
     
 wood_species = ["Горіх",

@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-PRINTER = '/dev/usb/lp0' # the printer device 
-DOTS_MM = 8 # printer dots per mm, 8 == 203 dpi 
-WIDTH_MM = 56 # sticker width, mm 
-HEIGHT_MM =40  # sticker height, mm 
-GAP_MM = 1.8 # sticker gap, mm 
-FONT = "5" # built-in vector font, scalable by X and Y 
-FONT_X_MULT = 4 # font multiplication, for "0" font is size in points 
-FONT_Y_MULT = 4 # font multiplication, for "0" font is size in points 
+# PRINTER = '/dev/usb/lp0' # the printer device 
+# DOTS_MM = 8 # printer dots per mm, 8 == 203 dpi 
+# WIDTH_MM = 56 # sticker width, mm 
+# HEIGHT_MM =40  # sticker height, mm 
+# GAP_MM = 1.8 # sticker gap, mm 
+# FONT = "5" # built-in vector font, scalable by X and Y 
+# FONT_X_MULT = 4 # font multiplication, for "0" font is size in points 
+# FONT_Y_MULT = 4 # font multiplication, for "0" font is size in points 
 import os 
 import sys 
 import time 
@@ -54,12 +54,12 @@ class Printer:
         self.command('GAP {} mm,0mm'.format(self.GAP_MM)) 
         self.command('DIRECTION 1')
 
-    def print(self):
+    def print(self,pages):
         #self.wait_printer() 
         self.page_setup() 
         for cmd in self.commands:
             self.command(cmd)
-        self.command('PRINT 1,1')
+        self.command(f'PRINT 1,{pages}')
 
     def command(self, cmd): 
         
