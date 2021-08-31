@@ -37,4 +37,4 @@ def undistort_image(img,filename):
     original = create_opencv_image_from_stringio(img,cv2.IMREAD_ANYCOLOR+cv2.IMREAD_ANYDEPTH)
     dst = cv2.undistort(original, mtx, dist, None, mtx)
     cv2.imwrite(f'{location}{filename}.jpg', dst)
-    #cv2.imwrite(f'photos\\out\\test_undist.jpg', original)
+    cv2.imwrite(f'{location}{filename}_raw.jpg',original)

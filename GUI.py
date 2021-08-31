@@ -4,7 +4,10 @@ import slab_photo_client_awaitable
 import asyncio
 from prnt_tspl import Printer
 
-p=Printer()
+try:
+    p=Printer()
+except:
+    p=1
 sg.theme('Topanga')      # Add some color to the window
 my_font = ("Consolas", 22)
 counter_font = ("Consolas", 25)
@@ -91,13 +94,10 @@ while True:
         "thickness": int(values['-THCK-']),
         }
         print(row)
-        id = asyncio.run(slab_photo_client_awaitable.main(row))
+        id = asyncio.run(slab_photo_client_awaitable.main(row,p))
         #print("id returned to GUI: ",id)
         st_window['-status_bar-'].update("OK, id:"+str(id))
-        try:
-            print_id(id,p)
-        except:
-            print ("Test - no printer connected; id: ",id)
+        
         
     
     if event == '-WOOD-':     ### select wood species ###

@@ -14,7 +14,11 @@ def index():
     global i
     i+=1
     if request.method == 'GET':
-        asyncio.run(slab_photo_client_awaitable.main()) 
+        row={
+        "wood" : "горіх",
+        "thickness": 60,
+        }
+        asyncio.run(slab_photo_client_awaitable.main(row)) 
         return f"OK, {i}"
     
     return render_template("index.html")

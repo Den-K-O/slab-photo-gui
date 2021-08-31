@@ -77,7 +77,7 @@ def close_socket(sock):
     if DEBUG: print ('closing socket')
     sock.close()
 
-async def get_photo(sock,row):    
+async def get_photo(sock,row,p):    
     
     start = time()
     photo = await request_photo(sock)     
@@ -87,9 +87,11 @@ async def get_photo(sock,row):
     print("Slab added to DB, id: ",id)
     
     name = str(id)
-    
-    undistort_charuco.undistort_image(photo,name)
-        
+    try:
+        print_id(id,p)
+    except:
+        print ("Test - no printer connected; id: ",id)
+    undistort_charuco.undistort_image(photo,name)        
     end = time()
     if DEBUG: print("sending time: ", end-start)
     # create_photo_entry_in_DB
@@ -145,12 +147,12 @@ def create_progressbar():
     # done with loop... need to destroy the window as it's still open
     return window
 
-async def main(slab_data):
+async def main(slab_data,p):
     sock = open_socket()  
     row=slab_data   
     tasks = []
     t1=asyncio.create_task(progbar_check())
-    t2=asyncio.create_task(get_photo(sock,row))    
+    t2=asyncio.create_task(get_photo(sock,row,p))    
     
     await t1
     id = await t2
