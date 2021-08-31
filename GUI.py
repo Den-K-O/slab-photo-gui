@@ -94,7 +94,10 @@ while True:
         id = asyncio.run(slab_photo_client_awaitable.main(row))
         #print("id returned to GUI: ",id)
         st_window['-status_bar-'].update("OK, id:"+str(id))
-        print_id(id,p)
+        try:
+            print_id(id,p)
+        except:
+            print ("Test - no printer connected; id: ",id)
         
     
     if event == '-WOOD-':     ### select wood species ###
