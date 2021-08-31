@@ -13,8 +13,11 @@ import time
 import re 
 from PIL import Image 
 
+
+
 #DEBUG = False
 DEBUG = True
+
 class Printer:    
     def __init__(self):
         self.PRINTER = '/dev/usb/lp0' # the printer device 
@@ -105,6 +108,15 @@ class Printer:
 
 
 
+def print_id(id,p):
+    if DEBUG: print("starting")  
+    if DEBUG: print ("printer initiated")
+    p.clear_print_buffer()
+    p.print_text("S"+str(id).zfill(5),x=24,y=112,x_mult=2,y_mult=2)   
+    if DEBUG: print ("commands ready:")
+    if DEBUG: print(p.commands)
+    p.print(3)
+    if DEBUG: print("finished")
 
 if __name__ == '__main__':
     if DEBUG: print("starting")    
