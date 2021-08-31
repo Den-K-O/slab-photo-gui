@@ -2,7 +2,7 @@ import PySimpleGUI as sg
 import base64
 import slab_photo_client_awaitable
 import asyncio
-from prnt_tspl import Printer
+from prnt_tspl import Printer,print_id
 
 try:
     p=Printer()
