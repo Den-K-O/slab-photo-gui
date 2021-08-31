@@ -3,6 +3,7 @@ import cv2
 import sys
 import numpy as np
 import platform
+from time import time
 
 TEST = platform.system()=='Windows'
 
