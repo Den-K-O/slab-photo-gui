@@ -38,10 +38,13 @@ def undistort_image(img,filename,mapx, mapy):
     #mtx, dist = load_coefficients('calibration_charuco.yml')
     start = time()
     original = create_opencv_image_from_stringio(img,cv2.IMREAD_ANYCOLOR+cv2.IMREAD_ANYDEPTH)
+    end = time()
+    bytes_to_opencv = end-start
     #dst = cv2.undistort(original, mtx, dist, None, mtx)
+    start = time()
     dst=cv2.remap(original, mapx, mapy, cv2.INTER_LINEAR)
     cv2.imwrite(f'{location}{filename}.jpg', dst)
     end = time()
     undistort_time = end-start
-    print ("undistort time: ", undistort_time)
+    print ("undistort time: ", bytes_to_opencv,"+",undistort_time)
     #cv2.imwrite(f'{location}{filename}_raw.jpg',original)
