@@ -3,6 +3,10 @@ import base64
 import slab_photo_client_awaitable
 import asyncio
 from prnt_tspl import Printer,print_id
+import numpy as np
+
+mapx=np.load('mapx.npy')
+mapy=np.load('mapy.npy')
 
 try:
     p=Printer()
@@ -95,7 +99,7 @@ while True:
         "thickness": int(values['-THCK-']),
         }
         print(row)
-        id = asyncio.run(slab_photo_client_awaitable.main(row,p))
+        id = asyncio.run(slab_photo_client_awaitable.main(row,p,mapx,mapy))
         #print("id returned to GUI: ",id)
         st_window['-status_bar-'].update("OK, id:"+str(id))
         
