@@ -8,9 +8,23 @@ import datetime
 import undistort_charuco
 import write_to_DB
 from prnt_tspl import Printer,print_id
+import os 
 
-DEBUG=False
-#DEBUG=True
+#DEBUG=False
+DEBUG=True
+import platform
+TEST = platform.system()=='Windows'
+
+
+def memory_monitor():
+    if not TEST:
+        p=os.popen('free')
+        lines=p.readlines()
+        return lines[1].split()[1:4]
+    else:
+        pass
+    
+
 
 def open_socket():
     HOST = '192.168.1.75'
@@ -114,6 +128,7 @@ async def progbar_check():
             break
             # update bar with loop value +1 so that bar eventually reaches the maximum
         if DEBUG: print (progress)
+        if DEBUG: print (memory_monitor())
         window['-PROG-'].update(progress)
         if progress <100:
             if dots <=3:
