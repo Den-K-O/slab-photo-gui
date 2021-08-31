@@ -19,15 +19,15 @@ button_size = 18
 #DEBUG = False
 DEBUG = True
 
-def print_id(id,p):
-    if DEBUG: print("starting")  
-    if DEBUG: print ("printer initiated")
-    p.clear_print_buffer()
-    p.print_text("S"+str(id).zfill(5),x=24,y=112,x_mult=2,y_mult=2)   
-    if DEBUG: print ("commands ready:")
-    if DEBUG: print(p.commands)
-    p.print(3)
-    if DEBUG: print("finished")
+# def print_id(id,p):
+    # if DEBUG: print("starting")  
+    # if DEBUG: print ("printer initiated")
+    # p.clear_print_buffer()
+    # p.print_text("S"+str(id).zfill(5),x=24,y=112,x_mult=2,y_mult=2)   
+    # if DEBUG: print ("commands ready:")
+    # if DEBUG: print(p.commands)
+    # p.print(3)
+    # if DEBUG: print("finished")
     
 wood_species = ["Горіх",
                 "Дуб",

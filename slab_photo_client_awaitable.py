@@ -7,6 +7,7 @@ import PySimpleGUI as sg
 import datetime
 import undistort_charuco
 import write_to_DB
+from prnt_tspl import Printer,print_id
 
 DEBUG=False
 #DEBUG=True
