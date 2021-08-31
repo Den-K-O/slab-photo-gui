@@ -84,7 +84,7 @@ async def get_photo(sock,row,p):
             
     # get name from slabs.id
     id=write_to_DB.create_entry(row)
-    print("Slab added to DB, id: ",id)
+    print("Slab added to DB, id: ",id, "printer: ",p)
     
     name = str(id)
     try:

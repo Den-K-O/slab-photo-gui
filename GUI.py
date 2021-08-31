@@ -8,6 +8,7 @@ try:
     p=Printer()
 except:
     p=1
+print("printer=", p )   
 sg.theme('Topanga')      # Add some color to the window
 my_font = ("Consolas", 22)
 counter_font = ("Consolas", 25)
