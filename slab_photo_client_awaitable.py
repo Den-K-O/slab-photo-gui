@@ -98,10 +98,15 @@ async def get_photo(sock,row,p,mapx,mapy):
     photo = await request_photo(sock)     
             
     # get name from slabs.id
-    id=write_to_DB.create_entry(row)
-    print("Slab added to DB, id: ",id, "printer: ",p)
+    if isinstance(row,dict):
+        id=write_to_DB.create_entry(row)
+        print("Slab added to DB, id: ",id, "printer: ",p)
+        name = str(id)
+    elif isinstance(row,int):
+        id=str
+        name = "підбір"+str(row)
+        
     
-    name = str(id)
     try:
         print_id(id,p)
     except:
