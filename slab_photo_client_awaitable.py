@@ -107,7 +107,7 @@ async def get_photo(sock,row,p,mapx,mapy):
         except:
             print ("Test - no printer connected; id: ",id)
     elif isinstance(row,int):
-        id=str
+        id=row
         name = "підбір"+str(row)   
     
     
