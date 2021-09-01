@@ -103,9 +103,9 @@ async def get_photo(sock,row,p,mapx,mapy):
         print("Slab added to DB, id: ",id, "printer: ",p)
         name = str(id)
         try:
-        print_id(id,p)
-    except:
-        print ("Test - no printer connected; id: ",id)
+            print_id(id,p)
+        except:
+            print ("Test - no printer connected; id: ",id)
     elif isinstance(row,int):
         id=str
         name = "підбір"+str(row)   
