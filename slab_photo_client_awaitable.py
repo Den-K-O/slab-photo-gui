@@ -102,15 +102,15 @@ async def get_photo(sock,row,p,mapx,mapy):
         id=write_to_DB.create_entry(row)
         print("Slab added to DB, id: ",id, "printer: ",p)
         name = str(id)
-    elif isinstance(row,int):
-        id=str
-        name = "підбір"+str(row)
-        
-    
-    try:
+        try:
         print_id(id,p)
     except:
         print ("Test - no printer connected; id: ",id)
+    elif isinstance(row,int):
+        id=str
+        name = "підбір"+str(row)   
+    
+    
     undistort_charuco.undistort_image(photo,name,mapx,mapy)        
     end = time()
     if DEBUG: print("sending time: ", end-start)
