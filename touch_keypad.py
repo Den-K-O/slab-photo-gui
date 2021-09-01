@@ -25,7 +25,7 @@ def keypad():
                sg.Column(column, vertical_alignment='top', justification='left',  k='-C-', size=(120,60)),sg.Text('', pad=((50,50),(0,0)),key='-EXPAND3-'),sg.Button('Назад',pad=p),]] 
               #[collapse([[sg.Button('dummy1',pad=p)]],"-1-"),sg.Button('0',pad=p),collapse([[sg.Button('dummy1',pad=p)]],"-2-"),sg.Button('Назад',pad=p)]]
 
-    window = sg.Window('Keypad', layout, default_button_element_size=(5,1), font=my_font, auto_size_buttons=False, grab_anywhere=False, size=(480, 320), no_titlebar=True, location=(0, 0), keep_on_top=True,  finalize=True)
+    window = sg.Window('Keypad', layout, default_button_element_size=(4,1), font=my_font, auto_size_buttons=False, grab_anywhere=False, size=(480, 320), no_titlebar=True, location=(0, 0), keep_on_top=True,  finalize=True)
     #window['-C-'].expand(True, True, True)    
     #window['-EXPAND2-'].expand(True, False, True)
     
