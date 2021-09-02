@@ -47,4 +47,4 @@ def undistort_image(img,filename,mapx, mapy):
     end = time()
     undistort_time = end-start
     print ("undistort time: ", bytes_to_opencv,"+",undistort_time)
-    #cv2.imwrite(f'{location}{filename}_raw.jpg',original)
+    cv2.imwrite(f'{location}{filename}_raw.jpg',original)

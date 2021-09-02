@@ -111,7 +111,7 @@ while True:
             #print(row)
             id = asyncio.run(slab_photo_client_awaitable.main(row,p,mapx,mapy))
             #print("id returned to GUI: ",id)
-            st_window['-status_bar-'].update("OK, order No:"+str(id))
+            st_window['-status_bar-'].update("OK, No:"+str(id))
         else:
             pass
         
