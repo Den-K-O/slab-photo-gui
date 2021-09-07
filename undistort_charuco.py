@@ -12,7 +12,7 @@ if TEST:
     
 else:
     location = '/home/pi/shared/'
-
+    
 # Load coefficients
 #mtx, dist = load_coefficients('calibration_charuco.yml')
 

@@ -5,9 +5,18 @@ import asyncio
 from prnt_tspl import Printer,print_id
 import numpy as np
 import touch_keypad
+import platform
 
-mapx=np.load('mapx.npy')
-mapy=np.load('mapy.npy')
+TEST = platform.system()=='Windows'
+
+if TEST:   
+    calibration_files_dir=''
+else:
+    calibration_files_dir= '/home/pi/py_scripts/slab-photo-gui/'
+
+
+mapx=np.load(calibration_files_dir+'mapx.npy')
+mapy=np.load(calibration_files_dir+'mapy.npy')
 
 try:
     p=Printer()
