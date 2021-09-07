@@ -61,9 +61,9 @@ def start_window():
                
          ]
     col2=[ 
-               [sg.Button('',key='-UP-', image_filename="working_dir+up.png",image_size=(80,80),image_subsample=2, font=my_font,size=(button_size,2), pad=((5,5),(5,5)))],
+               [sg.Button('',key='-UP-', image_filename=working_dir+"up.png",image_size=(80,80),image_subsample=2, font=my_font,size=(button_size,2), pad=((5,5),(5,5)))],
                [sg.Input(key='-THCK-', default_text = "30", size=(4,15),font=counter_font,pad=((5,5),(5,5)), justification='center')],
-               [sg.Button('',key='-DN-', image_filename="working_dir+dn.png",image_size=(80,80),image_subsample=2, font=my_font,size=(button_size,2), pad=((5,5),(5,5)))],
+               [sg.Button('',key='-DN-', image_filename=working_dir+"dn.png",image_size=(80,80),image_subsample=2, font=my_font,size=(button_size,2), pad=((5,5),(5,5)))],
                
              ]
 
