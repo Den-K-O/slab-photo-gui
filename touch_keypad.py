@@ -43,8 +43,11 @@ def keypad():
             # add the new digit
         elif event == 'OK':
             #keys_entered = values['input']
-            window.close()
-            return int(keys_entered)  # output the final string
+            if keys_entered:
+                window.close()
+                return int(keys_entered)  # output the final string
+            else:
+                pass
             
         elif event == 'Назад':
             window.close()

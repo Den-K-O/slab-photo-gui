@@ -1,0 +1,18 @@
+[Unit]
+Description=Graphical interface for taking slab photos on touchscreen
+After=multi-user.target
+After=graphical.target
+Wants=graphical.target
+Requires=network.target
+
+[Service]
+Type=idle
+User=pi
+Environment=DISPLAY=:0
+Environment=XAUTHORITY=/home/pi/.Xauthority
+ExecStart=/home/pi/py_scripts/slab-photo-gui/env/bin/python3 /home/pi/py_script$
+Restart=always
+RestartSec=20
+
+[Install]
+WantedBy=multi-user.target

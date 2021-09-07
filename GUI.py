@@ -116,7 +116,7 @@ while True:
     
     if event == '-PHOTO_GROUP-':        
         row=touch_keypad.keypad()
-        if row:
+        if isinstance(row,int):
             #print(row)
             id = asyncio.run(slab_photo_client_awaitable.main(row,p,mapx,mapy))
             #print("id returned to GUI: ",id)
