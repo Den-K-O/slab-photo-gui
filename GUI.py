@@ -10,13 +10,13 @@ import platform
 TEST = platform.system()=='Windows'
 
 if TEST:   
-    calibration_files_dir=''
+    working_dir=''
 else:
-    calibration_files_dir= '/home/pi/py_scripts/slab-photo-gui/'
+    working_dir= '/home/pi/py_scripts/slab-photo-gui/'
 
 
-mapx=np.load(calibration_files_dir+'mapx.npy')
-mapy=np.load(calibration_files_dir+'mapy.npy')
+mapx=np.load(working_dir+'mapx.npy')
+mapy=np.load(working_dir+'mapy.npy')
 
 try:
     p=Printer()
@@ -61,9 +61,9 @@ def start_window():
                
          ]
     col2=[ 
-               [sg.Button('',key='-UP-', image_filename="up.png",image_size=(80,80),image_subsample=2, font=my_font,size=(button_size,2), pad=((5,5),(5,5)))],
+               [sg.Button('',key='-UP-', image_filename="working_dir+up.png",image_size=(80,80),image_subsample=2, font=my_font,size=(button_size,2), pad=((5,5),(5,5)))],
                [sg.Input(key='-THCK-', default_text = "30", size=(4,15),font=counter_font,pad=((5,5),(5,5)), justification='center')],
-               [sg.Button('',key='-DN-', image_filename="dn.png",image_size=(80,80),image_subsample=2, font=my_font,size=(button_size,2), pad=((5,5),(5,5)))],
+               [sg.Button('',key='-DN-', image_filename="working_dir+dn.png",image_size=(80,80),image_subsample=2, font=my_font,size=(button_size,2), pad=((5,5),(5,5)))],
                
              ]
 
