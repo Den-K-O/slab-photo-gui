@@ -173,12 +173,11 @@ async def main(slab_data,p,mapx,mapy):
     row=slab_data   
     tasks = []
     t1=asyncio.create_task(progbar_check())
-    t2=asyncio.create_task(get_photo(sock,row,p,mapx,mapy))    
+    t2=asyncio.create_task(get_photo(sock,row,p,mapx,mapy))
     
     await t1
     id = await t2
-       
-    close_socket(sock) #in the end        
+    close_socket(sock) #in the end
     return id 
     
 if __name__=='__main__':

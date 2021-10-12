@@ -23,7 +23,7 @@ class Printer:
         self.PRINTER = '/dev/usb/lp0' # the printer device 
         self.DOTS_MM = 8 # printer dots per mm, 8 == 203 dpi 
         self.WIDTH_MM = 56 # sticker width, mm 
-        self.HEIGHT_MM =40  # sticker height, mm 
+        self.HEIGHT_MM =30  # sticker height, mm 
         self.GAP_MM = 1.8 # sticker gap, mm 
         self.FONT = "5" # built-in vector font, scalable by X and Y 
         self.FONT_X_MULT = 2 # font multiplication, for "0" font is size in points 
@@ -112,7 +112,7 @@ def print_id(id,p):
     if DEBUG: print("starting")  
     if DEBUG: print ("printer initiated")
     p.clear_print_buffer()
-    p.print_text("S"+str(id).zfill(5),x=24,y=112,x_mult=2,y_mult=2)   
+    p.print_text("S"+str(id).zfill(5),x=24,y=90,x_mult=2,y_mult=2)   
     if DEBUG: print ("commands ready:")
     if DEBUG: print(p.commands)
     p.print(3)
