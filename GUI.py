@@ -55,10 +55,10 @@ wood_species = ["Горіх",
 
 def start_window():
     col1=[            
-               [sg.Button(wood_species[0],key='-WOOD-',font=my_font,size=(button_size,1),pad=((5,5),(2,5)))],
-               [sg.Button('Слеб',key='-PHOTO-',font=my_font,size=(button_size,1),pad=((5,5),(2,5)))],
-               [sg.Button('Підбір',key='-PHOTO_GROUP-',font=my_font,size=(button_size,1),pad=((5,5),(2,5)))],
-               [sg.Button('Списати', key='-WRITE_OFF-', font=my_font, size=(button_size, 1), pad=((5, 5), (2, 5)))]
+               [sg.Button(wood_species[0],key='-WOOD-',font=my_font,size=(button_size,1),pad=((5,5),(5,5)))],
+               [sg.Button('Слеб',key='-PHOTO-',font=my_font,size=(button_size,1),pad=((5,5),(3,5)))],
+               [sg.Button('Підбір',key='-PHOTO_GROUP-',font=my_font,size=(button_size,1),pad=((5,5),(3,5)))],
+               [sg.Button('Списати', key='-WRITE_OFF-', font=my_font, size=(button_size, 1), pad=((5, 5), (3, 5)))]
                
          ]
     col2=[ 
