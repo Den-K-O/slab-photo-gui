@@ -6,6 +6,7 @@ from prnt_tspl import Printer,print_id
 import numpy as np
 import touch_keypad
 import platform
+import write_to_DB
 
 TEST = platform.system()=='Windows'
 
@@ -137,6 +138,13 @@ while True:
                 st_window['-WOOD-'].update(event)
                 wood_window.close()
                 break
+
+    if event == '-WRITE_OFF-':
+        slab_id=touch_keypad.keypad()
+        if slab_id:
+            print(slab_id)
+            write_to_DB.use_slab(slab_id)
+            st_window['-status_bar-'].update("write off, slab id: "+str(slab_id))
     
    
     if event == '-UP-':       ### change slab thickness ###   

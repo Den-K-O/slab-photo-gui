@@ -11,6 +11,17 @@ def add_quotes_to_strings(input):
         output=str(input)
     return output  
 
+def use_slab(id):
+    sql = f"""           
+     UPDATE slabs
+     SET
+     available = False     
+     WHERE 
+     id = {id};
+    """
+    db.run(sql)
+    return "OK"
+
 def create_entry(row):
 
     next_id=db.all("""select
