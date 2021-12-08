@@ -43,6 +43,7 @@ def undistort_image(img,filename,mapx, mapy):
     #dst = cv2.undistort(original, mtx, dist, None, mtx)
     start = time()
     dst=cv2.remap(original, mapx, mapy, cv2.INTER_LINEAR)
+    dst=cv2.resize(dst,None, fx = 1, fy = 0.93, interpolation = cv2.INTER_CUBIC)
     cv2.imwrite(f'{location}{filename}.jpg', dst)
     end = time()
     undistort_time = end-start
