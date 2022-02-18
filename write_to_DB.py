@@ -1,7 +1,7 @@
 from postgres import Postgres
 import datetime
 
-connstring = "host=192.168.1.72 user=bot password=rpibot dbname=postgres"
+connstring = "host=rpi-3b-dsp user=bot password=rpibot dbname=postgres"
 db = Postgres(connstring)
 
 def add_quotes_to_strings(input):
