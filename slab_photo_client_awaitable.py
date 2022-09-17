@@ -28,7 +28,7 @@ TEST = platform.system()=='Windows'
 
 def open_socket():
     # HOST = '192.168.1.62'
-    HOST = 'raspberrypi'
+    HOST = 'raspberrypi.local'
     PORT = 10000    
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     if DEBUG: print ('client socket opened')
