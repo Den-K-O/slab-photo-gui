@@ -89,7 +89,7 @@ wood_species_lst = wood_species.copy()
 def wood_selection_window(wood_species):  
     def button_or_nothing(name):        
         if name:
-            return sg.Button(name,font=my_font,size=(5,0),pad=((5,1),(5,1)))
+            return sg.Button(name,font=my_font,size=(5,2),pad=((2,2),(2,2)))
         else:
             return sg.Text("")
     MAX_COL = 3
